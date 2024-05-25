@@ -1,0 +1,40 @@
+exp:
+  expname: left_50_1000_0.01_3000_64_4_320_pos_sample
+  expdir: ./logs/
+  datadir: ./data/Left_CT_50.pickle
+network:
+  net_type: mlp
+  num_layers: 4
+  hidden_dim: 32
+  T: 1000
+  skips: [2]
+  out_dim: 1
+  last_activation: sigmoid
+  bound: 0.3
+encoder:
+  encoding: hashgrid
+  input_dim: 3
+  num_levels: 16
+  level_dim: 2
+  base_resolution: 16
+  log2_hashmap_size: 19
+render:
+  #n_samples: 192
+  n_samples: 320
+  n_fine: 0
+  perturb: True
+  raw_noise_std: 0.
+  netchunk: 409600
+train:
+  epoch: 3000
+  n_batch: 1
+  n_rays: 1024
+  n_patch: 64
+  patch_size: 4
+  lrate: 0.001
+  lrate_gamma: 0.1
+  lrate_step: 1000
+  resume: False
+log:
+  i_eval: 500  # Epoch for evaluation
+  i_save: 500  # Epoch for saving
